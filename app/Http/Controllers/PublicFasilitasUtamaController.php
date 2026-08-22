@@ -51,7 +51,7 @@ class PublicFasilitasUtamaController extends Controller
         $categoryLabel = ucwords($jenisFormatted);
 
         // Kata kunci pencarian di tabel Fasilitas
-        $searchTerms = [$jenisFormatted];
+        $searchTerms = [$jenisFormatted, $jenisSlug];
         if ($jenisSlug === 'akomodasi' || $jenisSlug === 'penginapan') {
             $searchTerms = ['akomodasi', 'penginapan'];
             $categoryLabel = 'Akomodasi & Penginapan';
@@ -95,7 +95,7 @@ class PublicFasilitasUtamaController extends Controller
         $page = \Illuminate\Pagination\Paginator::resolveCurrentPage() ?: 1;
         $perPage = 6;
         $items = new \Illuminate\Pagination\LengthAwarePaginator(
-            $itemsCollection->forPage($page, $perPage),
+            $itemsCollection->forPage($page, $perPage)->values(),
             $itemsCollection->count(),
             $perPage,
             $page,

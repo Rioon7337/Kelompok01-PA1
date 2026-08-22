@@ -35,11 +35,13 @@ return new class extends Migration
                 }
                 
                 // Add foreign key
-                Schema::table($tableName, function (Blueprint $table) use ($tableName) {
-                    $table->foreign('admin_id', "fk_{$tableName}_admin")
-                          ->references('id')->on('admin')
-                          ->onDelete('set null');
-                });
+                try {
+                    Schema::table($tableName, function (Blueprint $table) use ($tableName) {
+                        $table->foreign('admin_id', "fk_{$tableName}_admin")
+                              ->references('id')->on('admin')
+                              ->onDelete('set null');
+                    });
+                } catch (\Throwable $e) {}
             }
         }
     }

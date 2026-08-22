@@ -141,7 +141,15 @@
     <div class="container">
         <div class="fas-grid">
             @forelse($items as $item)
-            <a href="{{ route('fasilitas.detail', $item->id) }}" class="fas-card" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 80 }}">
+            @php
+                $detailRoute = route('fasilitas.detail', $item->id);
+                if (isset($item->is_penginapan_model) && $item->is_penginapan_model) {
+                    $detailRoute = route('penginapan.detail', $item->id);
+                } elseif (isset($item->is_kuliner_model) && $item->is_kuliner_model) {
+                    $detailRoute = route('kuliner.detail', $item->id);
+                }
+            @endphp
+            <a href="{{ $detailRoute }}" class="fas-card" data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 80 }}">
                 <div class="card-img-wrapper">
                     <img src="{{ $item->gambar_url }}" alt="{{ $item->nama_trans }}" loading="lazy"
                          onerror="this.onerror=null; this.src='{{ asset('image/fasilitas/default.jpg') }}'">

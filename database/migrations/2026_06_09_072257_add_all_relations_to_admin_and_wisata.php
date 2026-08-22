@@ -58,42 +58,50 @@ return new class extends Migration
         
         foreach ($tables as $tableName) {
             if (Schema::hasTable($tableName) && Schema::hasColumn($tableName, 'admin_id')) {
-                Schema::table($tableName, function (Blueprint $table) use ($tableName) {
-                    $table->foreign('admin_id', "fk_{$tableName}_admin")
-                          ->references('id')->on('admin')
-                          ->onDelete('set null');
-                });
+                try {
+                    Schema::table($tableName, function (Blueprint $table) use ($tableName) {
+                        $table->foreign('admin_id', "fk_{$tableName}_admin")
+                              ->references('id')->on('admin')
+                              ->onDelete('set null');
+                    });
+                } catch (\Throwable $e) {}
             }
         }
         
         // Koleksi_fotos ke Admin
         if (Schema::hasTable('koleksi_fotos') && Schema::hasColumn('koleksi_fotos', 'admin_id')) {
-            Schema::table('koleksi_fotos', function (Blueprint $table) {
-                $table->foreign('admin_id', 'fk_koleksifotos_admin')
-                      ->references('id')->on('admin')
-                      ->onDelete('set null');
-            });
+            try {
+                Schema::table('koleksi_fotos', function (Blueprint $table) {
+                    $table->foreign('admin_id', 'fk_koleksifotos_admin')
+                          ->references('id')->on('admin')
+                          ->onDelete('set null');
+                });
+            } catch (\Throwable $e) {}
         }
         
         // ==================== 3. BUAT FOREIGN KEY KE WISATA ====================
         
         foreach ($tables as $tableName) {
             if (Schema::hasTable($tableName) && Schema::hasColumn($tableName, 'wisata_id')) {
-                Schema::table($tableName, function (Blueprint $table) use ($tableName) {
-                    $table->foreign('wisata_id', "fk_{$tableName}_wisata")
-                          ->references('id_wisata')->on('wisata')
-                          ->onDelete('set null');
-                });
+                try {
+                    Schema::table($tableName, function (Blueprint $table) use ($tableName) {
+                        $table->foreign('wisata_id', "fk_{$tableName}_wisata")
+                              ->references('id_wisata')->on('wisata')
+                              ->onDelete('set null');
+                    });
+                } catch (\Throwable $e) {}
             }
         }
         
         // Koleksi_fotos ke Wisata
         if (Schema::hasTable('koleksi_fotos') && Schema::hasColumn('koleksi_fotos', 'wisata_id')) {
-            Schema::table('koleksi_fotos', function (Blueprint $table) {
-                $table->foreign('wisata_id', 'fk_koleksifotos_wisata')
-                      ->references('id_wisata')->on('wisata')
-                      ->onDelete('set null');
-            });
+            try {
+                Schema::table('koleksi_fotos', function (Blueprint $table) {
+                    $table->foreign('wisata_id', 'fk_koleksifotos_wisata')
+                          ->references('id_wisata')->on('wisata')
+                          ->onDelete('set null');
+                });
+            } catch (\Throwable $e) {}
         }
     }
 

@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('kontak', function (Blueprint $table) {
-            $table->string('jam_operasional')->nullable()->after('email');
-            $table->text('map_iframe')->nullable()->after('jam_operasional');
-            $table->text('map_lokasi')->nullable()->after('map_iframe');
-            $table->text('lokasi_bawah')->nullable()->after('map_lokasi');
-            $table->string('social_fb')->nullable()->after('lokasi_bawah');
-            $table->string('social_ig')->nullable()->after('social_fb');
-            $table->string('social_twitter')->nullable()->after('social_ig');
-            $table->string('social_youtube')->nullable()->after('social_twitter');
-            $table->string('social_tiktok')->nullable()->after('social_youtube');
+            if (!Schema::hasColumn('kontak', 'jam_operasional')) $table->string('jam_operasional')->nullable()->after('email');
+            if (!Schema::hasColumn('kontak', 'map_iframe')) $table->text('map_iframe')->nullable()->after('jam_operasional');
+            if (!Schema::hasColumn('kontak', 'map_lokasi')) $table->text('map_lokasi')->nullable()->after('map_iframe');
+            if (!Schema::hasColumn('kontak', 'lokasi_bawah')) $table->text('lokasi_bawah')->nullable()->after('map_lokasi');
+            if (!Schema::hasColumn('kontak', 'social_fb')) $table->string('social_fb')->nullable()->after('lokasi_bawah');
+            if (!Schema::hasColumn('kontak', 'social_ig')) $table->string('social_ig')->nullable()->after('social_fb');
+            if (!Schema::hasColumn('kontak', 'social_twitter')) $table->string('social_twitter')->nullable()->after('social_ig');
+            if (!Schema::hasColumn('kontak', 'social_youtube')) $table->string('social_youtube')->nullable()->after('social_twitter');
+            if (!Schema::hasColumn('kontak', 'social_tiktok')) $table->string('social_tiktok')->nullable()->after('social_youtube');
         });
     }
 
