@@ -74,7 +74,7 @@ return [
         'read_more'         => 'Baca Selengkapnya',
         'by'                => 'oleh',
         'hero_badge'        => 'UNESCO Global Geopark',
-        'hero_locations'    => 'Balige &middot; Meat <br><span>Liang Sipege &middot; Batu Basiha</span>',
+        'hero_locations'    => 'Pearung &middot; Paraingan <br><span>Sipinsur</span>',
         'no_featured_dest'  => 'Belum ada destinasi unggulan. Tandai destinasi di panel admin agar muncul di sini.',
         'history_years'     => 'Tahun Sejarah',
         'cultural_heritage' => 'Warisan Budaya',
