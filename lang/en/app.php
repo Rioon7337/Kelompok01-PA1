@@ -74,7 +74,7 @@ return [
         'read_more'         => 'Read More',
         'by'                => 'by',
         'hero_badge'        => 'UNESCO Global Geopark',
-        'hero_locations'    => 'Balige &middot; Meat <br><span>Liang Sipege &middot; Batu Basiha</span>',
+        'hero_locations'    => 'Pearung &middot; Paraingan <br><span>Sipinsur</span>',
         'no_featured_dest'  => 'No featured destinations yet. Mark destinations in the admin panel to show them here.',
         'history_years'     => 'Years of History',
         'cultural_heritage' => 'Cultural Heritage',
