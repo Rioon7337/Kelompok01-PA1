@@ -73,7 +73,7 @@ return [
     |
     */
 
-    'connection' => env('SESSION_CONNECTION'),
+    'connection' => env('SESSION_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -101,7 +101,7 @@ return [
     |
     */
 
-    'store' => env('SESSION_STORE'),
+    'store' => env('SESSION_STORE', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -127,10 +127,7 @@ return [
     |
     */
 
-    'cookie' => env(
-        'SESSION_COOKIE',
-        Str::slug((string) env('APP_NAME', 'laravel')).'-session'
-    ),
+    'cookie' => env('SESSION_COOKIE', 'laraavel_session'),
 
     /*
     |--------------------------------------------------------------------------
